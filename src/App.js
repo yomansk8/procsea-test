@@ -1,28 +1,57 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+import styled from 'styled-components'
+
+import AddExpenseForm from './components/AddExpenseForm'
+import Expenses from './components/Expenses'
+// import Header from './components/Header'
+import Total from './components/Total'
+import UserFilterForm from './components/UserFilterForm'
+
+const Container = styled.div`
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+`
+
+const Header = styled.div`
+  background-color: hsl(208, 73%, 24%);
+  color: white;
+  font-weight: 500;
+  padding: 1em;
+  text-align: center;
+`
+
+const Title = styled.div`
+  font-size: 1.1em;
+`
+
+const Main = styled.div`
+  flex: 1 1 auto;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch;
+`
+
+function App() {
+  return (
+    <Container>
+      <Header>
+        <Title>Integration week-end</Title>
+        <UserFilterForm />
+      </Header>
+      <Main>
+        <Expenses />
+      </Main>
+      <div>
+        <AddExpenseForm />
+        <Total />
       </div>
-    );
-  }
+    </Container>
+  )
 }
 
-export default App;
+export default App
